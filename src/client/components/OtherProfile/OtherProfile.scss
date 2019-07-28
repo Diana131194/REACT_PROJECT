@@ -1,0 +1,35 @@
+
+.otherprofile-root {
+  text-align: center;
+}
+
+.otherprofile-header {
+  background-color: #222;
+  padding: 10px;
+  color: white;
+  font-size: 20pt;
+}
+
+.otherprofile-intro {
+  font-size: 15pt;
+}
+
+ > div {
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-align: center;
+    box-sizing: border-box;
+    white-space: pre;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

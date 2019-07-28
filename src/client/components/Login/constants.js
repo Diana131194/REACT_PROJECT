@@ -1,0 +1,9 @@
+const LoginActionsConstants = {
+    UPDATE_NAME: 'UPDATE_NAME',
+    UPDATE_PASSWORD: 'UPDATE_PASSWORD',
+    LOGIN_BUTTON: 'LOGIN_BUTTON',
+    LOGIN_BUTTON_SUCCESS: 'LOGIN_BUTTON_SUCCESS',
+    LOGIN_BUTTON_FAIL: 'LOGIN_BUTTON_FAIL'
+};
+
+export { LoginActionsConstants }
