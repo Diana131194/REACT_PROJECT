@@ -7,11 +7,11 @@ function loadCitiesAction(){
     }
 }
 
-function updateNameAction(name){
+function updateNameAction(userName){
     return {
         type: RegisterActionsConstants.UPDATE_NAME,
         payload: {
-            name
+            userName
         }
     }
 }
@@ -45,31 +45,33 @@ function updateImgAction(event) {
 
 function suggestLocationsAction(event) {
     return {
-        type: RegisterActionsConstants.SUGGEST_LOACTIONS,
+        type: RegisterActionsConstants.SUGGEST_LOCATIONS,
         payload: {
             event
         }
     }
 }
 
-function clickAction(event, props) {
-    return {
+function clickAction(event, data) {
+    console.log("%%%%%%%%%%%%%" + data.userName)
+    return {     
         type: RegisterActionsConstants.CLICK,
         payload: {
             event,
-            userName: props.userName,
-            password: props.password,
-            location: props.location,
-            img: props.img
+            userName: data.userName,
+            password: data.password,
+            location: data.location,
+            img: data.img
         }
     }
 }
 
-function updateNameSuccessAction(res){
+function updateNameSuccessAction(res, userName){
     return {
         type: RegisterActionsConstants.UPDATE_NAME_SUCCESS,
         payload: {
-            res
+            res,
+            userName
         }
     }
 }

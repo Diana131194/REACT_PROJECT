@@ -9,7 +9,7 @@ const RegisterActionsConstants = {
     UPDATE_NAME_SUCCESS: 'UPDATE_NAME_SUCCESS',
     UPDATE_NAME_FAIL: 'UPDATE_NAME_FAIL',
     CLICK_SUCCESS: 'CLICK_SUCCESS',
-    CLICK_FAIL: 'CLICK_FALE'
+    CLICK_FAIL: 'CLICK_FAIL'
 }
 
 export {RegisterActionsConstants}

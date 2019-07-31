@@ -6,6 +6,8 @@ import LoginReducer from './components/Login/reducer';
 import OtherProfileReducer from './components/OtherProfile/reducer';
 import SelfPropertiesReducer from './components/SelfProperties/reducer';
 import ReviewReducer from './components/Review/reducer';
+import SelfProfileReducer from './components/SelfProfile/reducer';
+import RestaurantReducer from './components/Restaurant/reducer';
 
 export default combineReducers({
   app: AppReducer,
@@ -14,5 +16,7 @@ export default combineReducers({
   login: LoginReducer,
   otherProfile: OtherProfileReducer,
   selfProperties: SelfPropertiesReducer,
-  review : ReviewReducer
+  review : ReviewReducer,
+  selfProfile : SelfProfileReducer,
+  restaurant : RestaurantReducer
 });

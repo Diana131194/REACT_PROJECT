@@ -39,8 +39,9 @@ class Review extends Component {
 
         const new_review = dummy.map(topic => {
             return(
-            <div>
-                <ln>{topic.label} { this.state[topic.tag] != null ? this.state[topic.tag] : 0} out of 5</ln>
+            <div className="center">
+                <Card style={{width: "500px", margin: "0 auto"}}>
+                <text style={{ fontWeight: "bold" }}>{topic.label}</text> { this.state[topic.tag] != null ? this.state[topic.tag] : 0} out of 5
                 <Button
                     type="edit-review"
                     label="Edit"
@@ -65,10 +66,12 @@ class Review extends Component {
                         />
                     </React.Fragment>
                 }
+                </Card>
             </div>)
         }
         )
         return (
+            
           <div className="collection-item">  
               {!this.props.deleted &&
                 <React.Fragment>

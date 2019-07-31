@@ -12,9 +12,9 @@ class SelfProperties extends Component{
         const header = <img alt="Card" src={this.props.img} />;
         const footer = <span>
                             <InputText placeholder="New Username" value={this.props.editedName} onChange={(e) => this.props.editedNameEventHandler(e.target.value)} />
-                            <Button label="Edit Username" style={{ marginRight: '.25em' }} onClick={() => this.props.editNameEventHandler(this.props.editedName)} />
+                            <Button label="Edit Username" style={{ marginRight: '.25em' }} onClick={() => this.props.editNameEventHandler(this.props.userName, this.props.editedName)} />
                             <InputText placeholder="New Location" value={this.props.editedLocation} onChange={(e) => this.props.editedLocationEventHandler(e.target.value)} />
-                            <Button label="Edit location" style={{ marginRight: '.25em' }} onClick={() => this.props.editLocationEventHandler(this.props.editedLocation)}  />
+                            <Button label="Edit location" style={{ marginRight: '.25em' }} onClick={() => this.props.editLocationEventHandler(this.props.location, this.props.editedLocation)}  />
                        </span>;
         return (
         <div className="left">

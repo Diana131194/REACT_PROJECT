@@ -6,7 +6,7 @@ const SelfProfileReducer = (state = initialState.selfProfile, action) => {
         case SelfProfileActionsConstants.UPDATE_STATE_SUCCESS:
             return {
                 ...state,
-                userName: action.payload.name,
+                userName: action.payload.userName,
                 location: action.payload.location,
                 img: action.payload.img,
                 reviews: action.payload.reviews
@@ -25,5 +25,10 @@ const SelfProfileReducer = (state = initialState.selfProfile, action) => {
                 reviews: new List(new_reviews),
                 date: new Date()
             }
+        default: 
+            return state
     }
 }
+
+
+export default SelfProfileReducer;

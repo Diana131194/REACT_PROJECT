@@ -41,7 +41,7 @@ class Register extends React.Component {
     render(){
         return (
             <div className="app-register">
-                <h2 style={Header2}>not registerder?</h2>
+                <h2 style={Header2}>not registered?</h2>
                 <h3 style={Header3}>register now!</h3>
                 <form>                    
                    <InputText
@@ -58,8 +58,10 @@ class Register extends React.Component {
                     <br/>
                     <AutoComplete 
                         value={this.props.location}
+                        scrollHeight="100px"
                         placeholder="Location"
                         onChange={(e) => this.props.updateLocationEventHandler(e.value)}
+                        suggestions= {this.props.locationSuggestions}
                         completeMethod={(e) => this.props.suggestLocationsEventHandler(e)} 
                     />
 
@@ -75,7 +77,7 @@ class Register extends React.Component {
                         type="submit"
                         label="Register"
                         className="p-button-raised p-button-rounded"
-                        onClick={(e) => this.clickEventHandler(e, this.props)}
+                        onClick={(e) => this.props.clickEventHandler(e, this.props)}
                     />
 
                 </form>
@@ -90,6 +92,9 @@ class Register extends React.Component {
 }
 
 const mapStateToProps =(state) => {
+    console.log(state['register'].userName)
+    console.log(state['register'].password)
+
     return {
         userName: state['register'].userName,
         password: state['register'].password,
@@ -103,8 +108,8 @@ const mapStateToProps =(state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
 
-        clickEventHandler: (event) => {
-            dispatch(RegisterActions.clickAction(event))
+        clickEventHandler: (event, data) => {
+            dispatch(RegisterActions.clickAction(event, data))
         },
         suggestLocationsEventHandler: (event) => {
             dispatch(RegisterActions.suggestLocationsAction(event))
@@ -112,8 +117,8 @@ const mapDispatchToProps = (dispatch) => {
         loadCitiesEventHandler: () => {
             dispatch(RegisterActions.loadCitiesAction())
         },
-        updateNameEventHandler: (name) => {
-            dispatch(RegisterActions.updateNameAction(name))
+        updateNameEventHandler: (userName) => {
+            dispatch(RegisterActions.updateNameAction(userName))
         },
         updatePasswordEventHandler: (password) => {
             dispatch(RegisterActions.updatePasswordAction(password))
@@ -121,8 +126,8 @@ const mapDispatchToProps = (dispatch) => {
         updateLocationEventHandler: (location) => {
             dispatch(RegisterActions.updateLocationAction(location))
         },
-        updateImgEventHandler: (img) => {
-            dispatch(RegisterActions.updateImgAction(img))
+        updateImgEventHandler: (event) => {
+            dispatch(RegisterActions.updateImgAction(event))
         }
 
     }

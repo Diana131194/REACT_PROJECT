@@ -1,17 +1,19 @@
 import { SelfProfileActionsConstants } from './constants'
 
-function updateStateAction(name) {
+function updateStateAction(userName) {
     return {
         type: SelfProfileActionsConstants.UPDATE_STATE,
-        name
+        payload: {
+            userName  
+        }
     }
 }
 
-function updateStateSuccessAction(name, location, img, reviews) {
+function updateStateSuccessAction(userName, location, img, reviews) {
     return {
         type: SelfProfileActionsConstants.UPDATE_STATE_SUCCESS,
         payload: {
-            name,
+            userName,
             location, 
             img,
             reviews

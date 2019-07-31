@@ -10,6 +10,18 @@ function updateTagAction(tag) {
   }
 }
 
+function updateLoginAction(userName, location, img, reviews) {
+    return {
+        type: AppActionsConstants.UPDATE_LOGIN,
+        payload: {
+            userName,
+            location,
+            img,
+            reviews
+        }
+    }
+}
+
 function loadTagsAction(){
     return {
         type: AppActionsConstants.LOAD_TAGS,
@@ -35,6 +47,7 @@ function loadTagsFailureAction(error){
 
 let AppActions  = {
     updateTagAction,
+    updateLoginAction,
     loadTagsAction,
     loadTagsSuccessAction,
     loadTagsFailureAction

@@ -14,42 +14,47 @@ function editedLocationAction(location) {
     }
 }
 
-function editNameAction(userName) {
+function editNameAction(oldUserName, newUserName) {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_NAME,
-        userName
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_NAME,
+        payload: {
+            oldUserName,
+            newUserName
+        }
+        
     }
 }
 
-function editLocationAction(location) {
+function editLocationAction(oldLocation, newLocation) {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_LOCATION,
-        location
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION,
+        oldLocation,
+        newLocation
     }
 }
 
 function editNameSuccessAction() {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_NAME_SUCCESS
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_NAME_SUCCESS
     }
 }
 
 function editNameFailAction(message) {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_NAME_FAIL,
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_NAME_FAIL,
         message
     }
 }
 
 function editLocationSuccessAction() {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_LOCATION_SUCCESS
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION_SUCCESS
     }
 }
 
 function editLocationFailAction(message) {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_LOCATION_FAIL,
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION_FAIL,
         message
     }
 }

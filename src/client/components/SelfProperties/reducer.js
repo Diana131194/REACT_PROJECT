@@ -14,14 +14,14 @@ const SelfPropertiesReducer = (state = initialState.selfProperties, action) => {
                 ...state,
                 editedLoaction: action.location
             }
-        case SelfPropertiesActionsConstants.UPDATE_NAME_SUCCESS:
+        case SelfPropertiesActionsConstants.UPDATE_NEW_NAME_SUCCESS:
             let temp = state.editedName
             return {
                 ...state,
-                userName: tepm,
+                userName: temp,
                 editedName: ''
             }
-        case SelfPropertiesActionsConstants.UPDATE_LOCATION_SUCCESS:
+        case SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION_SUCCESS:
             let temp2 = state.editedLoaction
             return{
                 ...state,

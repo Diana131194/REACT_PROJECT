@@ -7,7 +7,6 @@ import { BrowserRouter} from 'react-router-dom'
  */
 import App from './components/App';
 import Login from './components/Login';
-import Home from './components/Home';
 import SelfProfile from './components/SelfProfile';
 
 /**
@@ -19,7 +18,7 @@ export default (
         <Switch>
             <Route exact path="/" component={App}/>
             <Route path="/login" component={Login}/>
-            <Route path='/:profile_name' component={SelfProfile}/>
+            <Route path='/my_profile' component={SelfProfile} />
         </Switch>
     </BrowserRouter>
 );

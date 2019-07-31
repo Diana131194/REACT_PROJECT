@@ -8,7 +8,11 @@ export default {
     app: Map({
       size: 200,
       tag: '',
-      tags: List()
+      tags: List(),
+      logged_in: '',
+      location_logged_in: '',
+      img_logged_in: '',
+      reviews_logged_in: List()
     }),
     register: Map({
         userName: '',
@@ -16,7 +20,7 @@ export default {
         img: '',
         location: '',
         teken: false,
-        locationSuggestions: List(),
+        locationSuggestions: [],
         locations: List()
     }),
     otherProfile: Map({
@@ -27,7 +31,8 @@ export default {
     }),
     login: Map({
         userName: '',
-        password: ''
+        password: '',
+        message: ''
     }),
     selfProperties: Map({
         userName: '',
@@ -38,7 +43,6 @@ export default {
     }),
     review: Map({
         bq: 0,
-        new_bq: 0,
         sk: 0,
         clean: 0,
         dtq: 0,
@@ -62,6 +66,11 @@ export default {
         img: '',
         reviews: List(),
         add_button: false
+    }),
+    restaurant: Map({
+        name: '',
+        location: '',
+        reviews: List()
     })
     
 }

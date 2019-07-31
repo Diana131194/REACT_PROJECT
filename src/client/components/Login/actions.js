@@ -2,33 +2,34 @@ import { LoginActionsConstants } from './constants'
 
 function updateNameAction(userName) {
     return {
-        type: LoginActionsConstants.UPDATE_NAME,
+        type: LoginActionsConstants.UPDATE_LOGIN_NAME,
         userName
     }
 }
 
 function updatePasswordAction(password) {
     return {
-        type: LoginActionsConstants.UPDATE_PASSWORD,
+        type: LoginActionsConstants.UPDATE_LOGIN_PASSWORD,
         password
     }
 }
 
-function loginButtonAction(event, props) {
+function loginButtonAction(event, userName, password) {
     return {
         type: LoginActionsConstants.LOGIN_BUTTON,
         payload: {
             event,
-            props
+            userName,
+            password
         }
     }
 }
 
-function loginButtonSuccessAction(res, props) {
+function loginButtonSuccessAction(res, message) {
     return {
         type: LoginActionsConstants.LOGIN_BUTTON_SUCCESS,
         res,
-        props
+        message
     }
 }
 
