@@ -3,6 +3,7 @@ import { RadioButton } from 'primereact/radiobutton';
 import { SelectButton } from 'primereact/selectbutton';
 import { Button } from 'primereact/button';
 import { connect } from 'react-redux';
+import { Card } from 'primereact/card';
 
 class Restaurant extends Component {
 

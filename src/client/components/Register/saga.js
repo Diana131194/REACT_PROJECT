@@ -39,7 +39,7 @@ function* click (action) {
 
         const json = yield call([res, 'json']); //retrieve body of response
         if (json.succeded) {
-            yield put(RegisterActions.clickSuccessAction());
+            yield put(RegisterActions.clickSuccessAction(json.img));
         } else {
             yield put(RegisterActions.clickFailAction(json.error));
         }

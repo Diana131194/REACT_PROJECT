@@ -43,16 +43,16 @@ function updateImgAction(event) {
     }
 }
 
-function suggestLocationsAction(event) {
+function suggestLocationsAction(location) {
     return {
         type: RegisterActionsConstants.SUGGEST_LOCATIONS,
         payload: {
-            event
+            location
         }
     }
 }
 
-function clickAction(event, data) {
+function clickAction(event, data, img) {
     console.log("%%%%%%%%%%%%%" + data.userName)
     return {     
         type: RegisterActionsConstants.CLICK,
@@ -61,7 +61,7 @@ function clickAction(event, data) {
             userName: data.userName,
             password: data.password,
             location: data.location,
-            img: data.img
+            img
         }
     }
 }
@@ -83,9 +83,12 @@ function updateNameFailAction(message) {
     }
 }
 
-function clickSuccessAction() {
+function clickSuccessAction(img) {
     return {
-        type: RegisterActionsConstants.CLICK_SUCCESS
+        type: RegisterActionsConstants.CLICK_SUCCESS,
+        payload: {
+            img
+        }
     }
 }
 

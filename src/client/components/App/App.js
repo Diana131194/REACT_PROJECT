@@ -18,8 +18,8 @@ import { TabMenu } from 'primereact/tabmenu';
 import {List} from 'immutable'
 import picture from '../../fast-food.png';
 import SelfProfile from '../SelfProfile';
-import Restaurant from '../Restaurant';
-
+import Restaurants from '../Restaurants';
+import Profiles from '../Profiles';
 
 const Header = {
   padding: "10px 20px",
@@ -42,6 +42,15 @@ state = {
   imgs: List()
 }
 
+  componentDidUpdate(prevProps, prevState) {
+    Object.entries(this.props).forEach(([key, val]) =>
+      prevProps[key] !== val && console.log(`Prop '${key}' changed`)
+    );
+    Object.entries(this.state).forEach(([key, val]) =>
+      prevState[key] !== val && console.log(`State '${key}' changed`)
+    );
+  }
+
   updateImgEventHandler(event){
 
         let fr = new FileReader();
@@ -62,19 +71,7 @@ state = {
         <BrowserRouter>  
         <div className="app-header">      
           <h2 style={Header}>Welcome to the Fast-Food Review Platform!</h2>
-          
-          <Dropdown
-            value={this.props.tag}
-            onChange={this.props.updateTagEventHandler}
-            options={this.props.tags}
-            placeholder="search..."
-            editable={true}
-          />
-          <Button
-            label="Search"
-            className="p-button-raised p-button-rounded"
-            onClick={() => this.props.loadImagesEventHandler(this.props.tag)}
-          />
+        
             <main>
               {this.props.children}
             </main>
@@ -82,10 +79,13 @@ state = {
 
               
             </div>
-            <Link to="/">Home</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
-            <Link to='/my_profile'>My Profile</Link>
+            <li><Link to="/">Home</Link></li>
+            <Link to="/register">Register </Link>
+            <Link to="/login">Login </Link>
+            <Link to='/my_profile'>MyProfile </Link>
+            <Link to="/restaurants">restaurants</Link>
+            <Link to="/Profiles"> profiles</Link>
+            {this.props.logged_in != '' ? <Link to='/' onClick={() =>this.props.updateLoginEventHandler('', '', '', new List()) }>Logout </Link> : null}
           </div>
           <Switch>
             <Route exact path="/login" component={Login} />
@@ -95,6 +95,9 @@ state = {
                                                                           img={this.props.img_logged_in} 
                                                                           reviews={this.props.reviews_logged_in}
                                                        />} />
+            <Route exact path="/restaurants" component={Restaurants} />
+            <Route exact path="/profiles" component={Profiles} />
+            
           </Switch>
 
            
@@ -113,11 +116,11 @@ state = {
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  console.log("from app map state ")
+  console.log(state['app'].get('reviews_logged_in'))
   
   return {
       tag: state['app'].get('tag'),
-      tags: state['app'].get('tags').toArray(),
       logged_in: state['app'].get('logged_in'),
       location_logged_in: state['app'].get('location_logged_in'),
       img_logged_in: state['app'].get('img_logged_in'),
@@ -128,14 +131,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      loadTagsEventHandler: () => {
-          dispatch(AppActions.loadTagsAction());
-      },
-    updateTagEventHandler: (e) => {
-      dispatch(AppActions.updateTagAction(e.value));
-    },
     loadImagesEventHandler: (tag) => {
       dispatch(GalleryActions.loadImagesAction(tag))
+    },
+    updateLoginEventHandler: (name, location, img, reviews) =>{
+      dispatch(AppActions.updateLoginAction(name, location, img, reviews))
     }
   }
 };

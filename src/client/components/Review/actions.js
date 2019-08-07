@@ -8,11 +8,32 @@ function editAction(save_tag){
 }
 
 
-function saveStarAction(save_tag, tag, num){
+function updatedeletedReviewAction(){
+    return {
+        type: ReviewActionsConstants.UPDATE_DELETED
+    }
+}
+
+
+
+function saveStarAction(save_tag, tag, num, userName, title, location){
     return {
         type: ReviewActionsConstants.SAVE_STARS,
         payload: {
             save_tag,
+            tag,
+            num,
+            userName,
+            title,
+            location
+        }
+    }
+}
+
+function changeStarAction(tag, num) {
+    return {
+        type: ReviewActionsConstants.CHANGE_STARS,
+        payload: {
             tag,
             num
         }
@@ -23,7 +44,7 @@ function saveStarAction(save_tag, tag, num){
 
 function saveStarSuccessAction(save_tag, tag, num) {
     return {
-        type: ReviewActionsConstants.SAVE_STARS,
+        type: ReviewActionsConstants.SAVE_STARS_SUCCESS,
         payload: {
             save_tag,
             tag,
@@ -35,33 +56,12 @@ function saveStarSuccessAction(save_tag, tag, num) {
 
 function saveStarFailAction(message) {
     return {
-        type: ReviewActionsConstants.SAVE_STARS,
+        type: ReviewActionsConstants.SAVE_STARS_FAIL,
         message
     }
 }
 
-function deleteAction(title, userName) {
-    return {
-        type: ReviewActionsConstants.DELETE_REVIEW,
-        payload: {
-            title,
-            userName
-        }
-    }
-}
 
-function deleteSuccessAction() {
-    return {
-        type: ReviewActionsConstants.DELETE_REVIEW_SUCCESS,     
-    }
-}
-
-function deleteFailAction(message) {
-    return {
-        type: ReviewActionsConstants.DELETE_REVIEW_FAIL,
-        message
-    }
-}
 
 
 
@@ -71,10 +71,9 @@ let ReviewActions = {
     editAction, 
     saveStarAction,
     saveStarSuccessAction,
-    saveStarFailAction,
-    deleteAction,
-    deleteSuccessAction,
-    deleteFailAction
+    saveStarFailAction,  
+    changeStarAction,
+    updatedeletedReviewAction
 }
 
 export default ReviewActions

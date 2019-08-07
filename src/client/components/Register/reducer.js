@@ -18,7 +18,7 @@ const RegisterReducer = (state = initialState.register, action) =>{
             }
         case RegisterActionsConstants.SUGGEST_LOCATIONS:
             let results = state.locations.filter((location) => {
-                return location.toLowerCase().startsWith(action.payload.event.query.toLowerCase());
+                return location.toLowerCase().startsWith(action.payload.location.toLowerCase());
             });
             console.log("the suggestions are: " + results)
             return {
@@ -45,18 +45,6 @@ const RegisterReducer = (state = initialState.register, action) =>{
                 locationSuggestions: results2.toArray(),
                 location: action.payload.location
             }
-        case RegisterActionsConstants.UPDATE_IMG:
-            let fr = new FileReader();
-            //let newState = {}
-            fr.onloadend = () => {
-                let img = fr.result;
-                return {
-                    ...state,
-                    img: img
-                }         
-            };
-            fr.readAsDataURL(action.payload.event.target.files[0]);
-            //return newState
 
         case RegisterActionsConstants.UPDATE_NAME_SUCCESS:
            if (action.payload.res === true){
@@ -79,7 +67,8 @@ const RegisterReducer = (state = initialState.register, action) =>{
                ...state,
                userName: '',
                password: '',
-               location: ''
+               location: '',
+               img: action.payload.img
            }
         
         default: //otherwise state is lost!

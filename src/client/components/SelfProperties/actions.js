@@ -1,41 +1,34 @@
 import { SelfPropertiesActionsConstants } from './constants'
 
-function editedNameAction(userName) {
-    return {
-        type: SelfPropertiesActionsConstants.UPDATE_EDITED_NAME,
-        userName
-    }
-}
-
-function editedLocationAction(location) {
-    return {
-        type: SelfPropertiesActionsConstants.UPDATE_EDITED_LOCATION,
-        location
-    }
-}
 
 function editNameAction(oldUserName, newUserName) {
     return {
         type: SelfPropertiesActionsConstants.UPDATE_NEW_NAME,
         payload: {
             oldUserName,
-            newUserName
+            newUserName,
         }
         
     }
 }
 
-function editLocationAction(oldLocation, newLocation) {
+function editLocationAction(newLocation, userName) {
     return {
         type: SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION,
-        oldLocation,
-        newLocation
+        payload:{
+            newLocation,
+            userName
+        }
+      
     }
 }
 
-function editNameSuccessAction() {
+function editNameSuccessAction(newName) {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_NEW_NAME_SUCCESS
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_NAME_SUCCESS,
+        payload: {
+            newName
+        }
     }
 }
 
@@ -46,9 +39,12 @@ function editNameFailAction(message) {
     }
 }
 
-function editLocationSuccessAction() {
+function editLocationSuccessAction(newLocation) {
     return {
-        type: SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION_SUCCESS
+        type: SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION_SUCCESS,
+        payload: {
+            newLocation
+        }
     }
 }
 
@@ -60,8 +56,6 @@ function editLocationFailAction(message) {
 }
 
 let SelfPropertiesActions = {
-    editedNameAction,
-    editedLocationAction,
     editNameAction,
     editLocationAction,
     editNameSuccessAction,

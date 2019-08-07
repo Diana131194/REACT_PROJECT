@@ -22,6 +22,17 @@ const AppReducer = (state = initialState.app, action) => {
             state = state.set('img_logged_in', action.payload.img)
             state = state.set('reviews_logged_in', action.payload.reviews)
             return state;
+
+        case AppActionsConstants.UPDATE_LOGGED_NAME:
+            return state.set('logged_in', action.payload.name)
+
+        case AppActionsConstants.UPDATE_LOGGED_LOCATION:
+            return state.set('location_logged_in', action.payload.location)
+
+        case AppActionsConstants.UPDATE_LOGGED_REVIEWS:
+            console.log("from reviews reducer")
+            console.log(action.payload.reviews)
+            return state.set('reviews_logged_in', action.payload.reviews)
          
         default: //otherwise state is lost!
             return state;

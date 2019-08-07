@@ -14,6 +14,7 @@ import { Router, hashHistory as history } from 'react-router';
 import Login from './components/Login/index'
 import createBrowserHistory from 'history/createBrowserHistory';
 import routes from './routes';
+import "primeflex/primeflex.css"
 //create saga middleware
 const sagaMiddleware = createSagaMiddleware();
 

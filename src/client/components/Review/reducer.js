@@ -12,15 +12,21 @@ const ReviewReducer = (state = initialState.review, action) => {
         case ReviewActionsConstants.SAVE_STARS_SUCCESS:
             return {
                 ...state,
-                [action.payload.save_tag]: false
+                [action.payload.save_tag]: false,
+                [action.payload.tag]: [action.payload.num]
             }
 
-        case ReviewActionsConstants.DELETE_REVIEW_SUCCESS:
+        case ReviewActionsConstants.UPDATE_DELETED:
             return {
                 ...state,
                 deleted: true
             }
 
+        case ReviewActionsConstants.CAHNGE_STARS:
+            return {
+                ...state,
+                [action.payload.tag]: action.payload.num
+            }
 
         default: 
             return state;

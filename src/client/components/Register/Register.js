@@ -35,6 +35,10 @@ const Header4 = {
 
 class Register extends React.Component {
 
+    state = {
+        img : ''
+    }
+
     componentDidMount(){
         this.props.loadCitiesEventHandler();
     }
@@ -60,9 +64,9 @@ class Register extends React.Component {
                         value={this.props.location}
                         scrollHeight="100px"
                         placeholder="Location"
-                        onChange={(e) => this.props.updateLocationEventHandler(e.value)}
+                        onChange={(e) => this.props.updateLocationEventHandler(e.target.value)}
                         suggestions= {this.props.locationSuggestions}
-                        completeMethod={(e) => this.props.suggestLocationsEventHandler(e)} 
+                        completeMethod={() => this.props.suggestLocationsEventHandler(this.props.location)} 
                     />
 
                     <br/>
@@ -71,13 +75,19 @@ class Register extends React.Component {
                         type="file" 
                         name="search"
                         accept= "image/*"
-                        onChange={(e) => this.props.updateImgEventHandler(e)} />
+                        onChange={(e) => {let fr = new FileReader();
+                                    //let newState = {}
+                                    fr.onloadend = () => {
+                                        let img = fr.result;
+                                        this.setState({img})      
+                                    };
+                                    fr.readAsDataURL(e.target.files[0]);}} />
                     <br/>
                     <Button
                         type="submit"
                         label="Register"
                         className="p-button-raised p-button-rounded"
-                        onClick={(e) => this.props.clickEventHandler(e, this.props)}
+                        onClick={(e) => this.props.clickEventHandler(e, this.props, this.state.img)}
                     />
 
                 </form>
@@ -99,7 +109,6 @@ const mapStateToProps =(state) => {
         userName: state['register'].userName,
         password: state['register'].password,
         location: state['register'].location,
-        img: state['register'].img,
         taken: state['register'].taken,
         locationSuggestions: state['register'].locationSuggestions
     }
@@ -108,11 +117,12 @@ const mapStateToProps =(state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
 
-        clickEventHandler: (event, data) => {
-            dispatch(RegisterActions.clickAction(event, data))
+        clickEventHandler: (event, data, img) => {
+            dispatch(RegisterActions.clickAction(event, data, img))
         },
-        suggestLocationsEventHandler: (event) => {
-            dispatch(RegisterActions.suggestLocationsAction(event))
+        suggestLocationsEventHandler: (location) => {
+            console.log("the location in suggest is : " + location)
+            dispatch(RegisterActions.suggestLocationsAction(location))
         },
         loadCitiesEventHandler: () => {
             dispatch(RegisterActions.loadCitiesAction())
@@ -124,10 +134,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(RegisterActions.updatePasswordAction(password))
         },
         updateLocationEventHandler: (location) => {
+            console.log("the update location is : " + location)
             dispatch(RegisterActions.updateLocationAction(location))
-        },
-        updateImgEventHandler: (event) => {
-            dispatch(RegisterActions.updateImgAction(event))
         }
 
     }

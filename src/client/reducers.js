@@ -8,6 +8,8 @@ import SelfPropertiesReducer from './components/SelfProperties/reducer';
 import ReviewReducer from './components/Review/reducer';
 import SelfProfileReducer from './components/SelfProfile/reducer';
 import RestaurantReducer from './components/Restaurant/reducer';
+import RestaurantsReducer from './components/Restaurants/reducer';
+import ProfilesReducer from './components/Profiles/reducer';
 
 export default combineReducers({
   app: AppReducer,
@@ -18,5 +20,7 @@ export default combineReducers({
   selfProperties: SelfPropertiesReducer,
   review : ReviewReducer,
   selfProfile : SelfProfileReducer,
-  restaurant : RestaurantReducer
+  restaurant : RestaurantReducer,
+  restaurants: RestaurantsReducer,
+  profiles: ProfilesReducer
 });

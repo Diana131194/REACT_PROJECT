@@ -10,6 +10,34 @@ function updateTagAction(tag) {
   }
 }
 
+function updateLoggedNameAction(name) {
+    return {
+        type: AppActionsConstants.UPDATE_LOGGED_NAME,
+        payload: {
+            name
+        }
+    }
+}
+
+function updateLoggedLocationAction(location) {
+    return {
+        type: AppActionsConstants.UPDATE_LOGGED_LOCATION,
+        payload: {
+            location
+        }
+    }
+}
+
+function updateLoggedReviewsAction(reviews) {
+    return {
+        type: AppActionsConstants.UPDATE_LOGGED_REVIEWS,
+        payload: {
+            reviews
+        }
+    }
+}
+
+
 function updateLoginAction(userName, location, img, reviews) {
     return {
         type: AppActionsConstants.UPDATE_LOGIN,
@@ -47,10 +75,13 @@ function loadTagsFailureAction(error){
 
 let AppActions  = {
     updateTagAction,
+    updateLoggedNameAction,
     updateLoginAction,
     loadTagsAction,
     loadTagsSuccessAction,
-    loadTagsFailureAction
+    loadTagsFailureAction,
+    updateLoggedLocationAction,
+    updateLoggedReviewsAction
 };
 
 export default AppActions

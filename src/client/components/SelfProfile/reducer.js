@@ -2,30 +2,35 @@ import { SelfProfileActionsConstants } from './constants'
 import initialState from '../../initialState'
 
 const SelfProfileReducer = (state = initialState.selfProfile, action) => {
-    switch(action.type) {
-        case SelfProfileActionsConstants.UPDATE_STATE_SUCCESS:
+    switch (action.type) {
+
+
+        case SelfProfileActionsConstants.FETCH_REVIEWS_SUCCESS:
             return {
                 ...state,
-                userName: action.payload.userName,
-                location: action.payload.location,
-                img: action.payload.img,
+                reviews: action.payload.reviews
+            }
+        case SelfProfileActionsConstants.SAVE_REVIEW_SUCCESS:
+            return {
+                ...state,
+                reviews: action.payload.reviews
+
+            }
+
+        case SelfProfileActionsConstants.EDIT_REVIEW_SUCCESS:
+            return {
+                ...state,
                 reviews: action.payload.reviews
             }
 
-        case SelfProfileActionsConstants.ADD_REVIEW:
+        case SelfProfileActionsConstants.DELETE_REVIEW_SUCCESS:
             return {
                 ...state,
-                add_button: true
+                reviews: action.payload.reviews
             }
+    
 
-        case SelfProfileActionsConstants.SAVE_REVIEW_SUCCESS:
-            let new_reviews = [...(state.reviews), action.review]
-            return {
-                ...state,
-                reviews: new List(new_reviews),
-                date: new Date()
-            }
-        default: 
+        default:
             return state
     }
 }

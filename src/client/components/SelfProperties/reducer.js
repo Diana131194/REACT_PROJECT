@@ -4,28 +4,18 @@ import initialState from '../../initialState'
 const SelfPropertiesReducer = (state = initialState.selfProperties, action) => {
     switch(action.type) {
 
-        case SelfPropertiesActionsConstants.UPDATE_EDITED_NAME:
-            return {
-                ...state,
-                editedName: action.userName
-            }
-        case SelfPropertiesActionsConstants.UPDATE_EDITED_LOCATION:
-            return {
-                ...state,
-                editedLoaction: action.location
-            }
         case SelfPropertiesActionsConstants.UPDATE_NEW_NAME_SUCCESS:
-            let temp = state.editedName
+            console.log("new name reducer")
+            console.log(action.payload.newName)
             return {
                 ...state,
-                userName: temp,
+                userName: action.payload.newName,
                 editedName: ''
             }
         case SelfPropertiesActionsConstants.UPDATE_NEW_LOCATION_SUCCESS:
-            let temp2 = state.editedLoaction
             return{
                 ...state,
-                location: temp2,
+                location: action.payload.newLocation,
                 editedLoaction: ''
             }
 

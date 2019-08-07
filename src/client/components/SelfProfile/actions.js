@@ -1,32 +1,5 @@
 import { SelfProfileActionsConstants } from './constants'
 
-function updateStateAction(userName) {
-    return {
-        type: SelfProfileActionsConstants.UPDATE_STATE,
-        payload: {
-            userName  
-        }
-    }
-}
-
-function updateStateSuccessAction(userName, location, img, reviews) {
-    return {
-        type: SelfProfileActionsConstants.UPDATE_STATE_SUCCESS,
-        payload: {
-            userName,
-            location, 
-            img,
-            reviews
-        }
-    }
-}
-
-function updateStateFailAction(message) {
-    return {
-        type: SelfProfileActionsConstants.UPDATE_STATE_FAIL,
-        message
-    }
-}
 
 function addReviewAction() {
     return {
@@ -34,20 +7,41 @@ function addReviewAction() {
     }
 }
 
-function saveReviewAction(name, review) {
+function updateReviews(reviews) {
     return {
-        type: SelfProfileActionsConstants.SAVE_REVIEW,
+        type: SelfProfileActionsConstants.UPDATE_REVIEWS,
         payload: {
-            name,
-            review
+            reviews
         }
     }
 }
 
-function saveReviewSuccessAction(review) {
+function fetchReviewsSuccessAction(reviews) {
+    return {
+        type: SelfProfileActionsConstants.FETCH_REVIEWS_SUCCESS,
+        payload: {
+            reviews
+        }
+    }
+}
+
+function saveReviewAction(userName, review) {
+    return {
+        type: SelfProfileActionsConstants.SAVE_REVIEW,
+        payload: {
+            userName: userName,
+            review: review
+        }
+    }
+}
+
+function saveReviewSuccessAction(reviews) {
     return {
         type: SelfProfileActionsConstants.SAVE_REVIEW_SUCCESS,
-        review
+        payload: {
+            reviews
+        }
+
     }
 }
 
@@ -58,14 +52,86 @@ function saveReviewFailAction(message) {
     }
 }
 
+
+function deleteAction(title, userName, location) {
+    console.log("im in delete action")
+    return {
+        type: SelfProfileActionsConstants.DELETE_REVIEW,
+        payload: {
+            title,
+            userName,
+            location
+        }
+    }
+}
+
+function deleteSuccessAction(reviews) {
+    return {
+        type: SelfProfileActionsConstants.DELETE_REVIEW_SUCCESS,
+        payload :{
+            reviews
+        }
+    }
+}
+
+function deleteFailAction(message) {
+    return {
+        type: SelfProfileActionsConstants.DELETE_REVIEW_FAIL,
+        message
+    }
+}
+function fetchReviewsAction(userName) {
+    return {
+        type: SelfProfileActionsConstants.FETCH_REVIEWS,
+        payload: {
+            userName
+        }
+    }
+}
+
+function editReviewAction(userName, review) {
+    return {
+        type: SelfProfileActionsConstants.EDIT_REVIEW,
+        payload: {
+            userName,
+            review
+        }
+    }
+}
+
+
+function editReviewSuccessAction(reviews) {
+    return {
+        type: SelfProfileActionsConstants.EDIT_REVIEW_SUCCESS,
+        payload: {
+            reviews
+        }
+
+    }
+}
+
+function editReviewFailAction(message) {
+    return {
+        type: SelfProfileActionsConstants.EDIT_REVIEW_FAIL,
+        message
+    }
+}
+
+
 let SelfProfileActions = {
-    updateStateAction,
-    updateStateSuccessAction,
-    updateStateFailAction,
     addReviewAction,
     saveReviewAction,
     saveReviewSuccessAction,
-    saveReviewFailAction
+    saveReviewFailAction,
+    updateReviews,
+    deleteAction,
+    deleteSuccessAction,
+    deleteFailAction,
+    fetchReviewsAction,
+    fetchReviewsSuccessAction,
+    editReviewAction,
+    editReviewSuccessAction,
+    editReviewFailAction
 }
 
 export default SelfProfileActions

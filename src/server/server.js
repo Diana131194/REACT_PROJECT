@@ -29,8 +29,9 @@ if (process.env.NODE_ENV !== 'test') {
 const app = express();
 
 //body parser for json. must be done before API routes
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '40mb'}));
 app.use(bodyParser.urlencoded({
+  limit: '40mb',
   extended: true
 }));
 //app.use(bodyParser.urlencoded({ extended: false })); //handle body requests

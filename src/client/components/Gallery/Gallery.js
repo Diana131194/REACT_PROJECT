@@ -4,6 +4,7 @@ import Image from '../Image';
 import './Gallery.scss';
 import {connect} from 'react-redux';
 import GalleryActions from '../Gallery/actions';
+import {List} from 'immutable'
 
 class Gallery extends React.Component {
 
@@ -16,10 +17,6 @@ class Gallery extends React.Component {
     }
   }
 
-
-  componentDidMount() {
-    this.props.updateGalleryWidthEventHandler(Gallery.getGalleryWidth());
-  }
 
   render() {
     return (
@@ -36,7 +33,7 @@ class Gallery extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    images: props.imgs,
+    images: new List(props.imgs),
     size: state['app'].get('size')
   }
 };

@@ -7,14 +7,19 @@ import SelfPropertiesActions from './actions'
 
 
 class SelfProperties extends Component{
+
+    state = {
+        editedName: '',
+        editedLocation: ''
+    }
     
     render() {
         const header = <img alt="Card" src={this.props.img} />;
         const footer = <span>
-                            <InputText placeholder="New Username" value={this.props.editedName} onChange={(e) => this.props.editedNameEventHandler(e.target.value)} />
-                            <Button label="Edit Username" style={{ marginRight: '.25em' }} onClick={() => this.props.editNameEventHandler(this.props.userName, this.props.editedName)} />
-                            <InputText placeholder="New Location" value={this.props.editedLocation} onChange={(e) => this.props.editedLocationEventHandler(e.target.value)} />
-                            <Button label="Edit location" style={{ marginRight: '.25em' }} onClick={() => this.props.editLocationEventHandler(this.props.location, this.props.editedLocation)}  />
+                        <InputText placeholder="New name" value={this.state.editedName} onChange={(e) => this.setState({ editedName: e.target.value })} /><br/>
+                        <Button label="Edit name" onClick={() => this.props.editNameEventHandler(this.props.userName, this.state.editedName)} /><br />
+                        <InputText placeholder="New Location" value={this.state.editedLocation} onChange={(e) => this.setState({ editedLocation: e.target.value })} /><br />
+                        <Button label="Edit location" onClick={() => this.props.editLocationEventHandler(this.state.editedLocation, this.props.userName)} /> <br />
                        </span>;
         return (
         <div className="left">
@@ -24,7 +29,8 @@ class SelfProperties extends Component{
                 footer={footer}
                 title={this.props.userName}
                 subTitle={this.props.location}>
-            </Card>          
+            </Card>  
+                       
         </div>
         )
     }
@@ -35,26 +41,17 @@ const mapStateToProps = (state, props) => {
     return {
         userName: props.userName,
         location: props.location,
-        img: props.img,
-        editedName: state['selfProperties'].editedName,
-        editedLocation: state['selfProperties'].editedLocation
+        img: props.img
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        
-        editNameEventHandler: (name) => {
-            dispatch(SelfPropertiesActions.editNameAction(name))
+    return {      
+        editNameEventHandler: (oldName, newName) => {
+            dispatch(SelfPropertiesActions.editNameAction(oldName, newName))
         },
-        editLocationEventHandler: (location) => {
-            dispatch(SelfPropertiesActions.editlocationAction(location))
-        },
-        editedNameEventHandler: (name) => {
-            dispatch(SelfPropertiesActions.editedNameAction(name))
-        },
-        editedLocationEventHandler: (location) => {
-            dispatch(SelfPropertiesActions.editedLocationAction(location))
+        editLocationEventHandler: (newLocation, userName) => {
+            dispatch(SelfPropertiesActions.editLocationAction(newLocation, userName))
         }
     }
 }

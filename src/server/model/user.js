@@ -6,7 +6,6 @@ let userSchema = new Schema({
     password: String,
     location: String,
     img: String,
-    is_logged_in: false,
     reviews: [
         {
             title: String,

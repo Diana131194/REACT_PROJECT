@@ -3,7 +3,7 @@ const { List, Map } = require('immutable');
 export default {
     gallery: Map({
         images: List(),
-        galleryWidth: 0
+        galleryWidth: 685
     }),
     app: Map({
       size: 200,
@@ -12,7 +12,7 @@ export default {
       logged_in: '',
       location_logged_in: '',
       img_logged_in: '',
-      reviews_logged_in: List()
+      reviews_logged_in: []
     }),
     register: Map({
         userName: '',
@@ -39,7 +39,7 @@ export default {
         location:'',
         img: '',
         editedName: '',
-        etidetLocation: ''
+        editedLocation: ''
     }),
     review: Map({
         bq: 0,
@@ -64,13 +64,32 @@ export default {
         userName: '',
         location: '',
         img: '',
-        reviews: List(),
+        reviews: [],
         add_button: false
     }),
     restaurant: Map({
         name: '',
         location: '',
         reviews: List()
+    }),
+    restaurants: Map({
+        restaurants: [],
+        layout: 'list',
+        selectedCar: null,
+        visible: false,
+        sortKey: null,
+        sortOrder: null,
+        current_reviews: []
+    }),
+
+    profiles: Map({
+        profiles: [],
+        layout: 'list',
+        selectedCar: null,
+        visible: false,
+        sortKey: null,
+        sortOrder: null,
+        current_reviews: []
     })
     
 }
